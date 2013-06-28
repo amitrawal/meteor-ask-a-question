@@ -1,0 +1,48 @@
+<template name="questionSubmit">
+    <div id="mainbar" class="ask-mainbar">
+        <form>
+            <div id="question-form">
+                <div class="form-item ask-title">
+                    <table class="ask-title-table">
+                        <tbody>
+                            <tr>
+                                <td class="ask-title-cell-key">
+                                    <label for="title">Title</label>
+                                </td>
+                                <td class="ask-title-cell-value">
+                                    <input type="text" maxlength="300" name="title" id="title" autocomplete="off" placeholder="what's your question? be specific.">
+                                </td>
+                            </tr>                   
+                        </tbody>
+                    </table>            
+                </div>
+
+                <div class="form-item">
+                    <label for="description">Description</label>
+                    <textarea name="description" type="text" value="" style="height: 200px;line-height: 1.2;padding: 3px;width: 640px;"/>                    
+                </div>
+
+                <div class="form-item">
+                    <label for="tags">Tags</label>
+                    <input type="text" maxlength="300" name="tags" id="tags" autocomplete="off" placeholder="tags seperated by space.">                        
+                </div>
+
+                <div class="form-submit">
+                    <input type="submit" value="Post Your Question" class="btn" id="submit-button"/>            
+                </div>
+            </div>    
+        </form>        
+    </div>
+  <div id="sidebar" class="ask-sidebar">
+    <div class="scroller">
+        <div class="ask-sidebar-info">
+            <h4>How To Ask?</h4>
+            <p>
+                We prefer questions that can be answered, not just discussed.
+                <br><br>
+                Provide details. Share your research.
+            </p>
+        </div>
+    </div>
+  </div>  
+</template>

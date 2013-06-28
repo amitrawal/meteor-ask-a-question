@@ -1,0 +1,62 @@
+<template name="header">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <a class="brand" href="/">Ask A Question</a>       
+      {{> header_navigation}}
+      <div class="container">
+        <div class="nav pull-right">
+          {{> user_info}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="header_navigation">
+  <ul id="header_navigation" class="nav">
+    <li {{#if tabIs "listQuestions"}}class="active"{{/if}}>
+      <a id="listQuestions" href="/questions">Questions</a>
+    </li>
+    {{#if currentUser}}
+      <li {{#if tabIs "askQuestion"}}class="active"{{/if}}>
+        <a id="askQuestion" href="/questions/new">Ask</a>
+      </li>
+    {{/if}}
+  </ul>
+</template>
+
+<template name="user_info">
+  <ul class="nav pull-right">
+    {{#if currentUser}}
+      {{> user_loggedin}}
+    {{else}}
+      {{> user_loggedout}}
+    {{/if}}
+  </ul>
+</template>
+
+<template name="user_loggedin">
+  {{#if loggingIn}}
+    <li><a>Logging In...</a></li>
+  {{else}}  
+     <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        {{currentUser.profile.name}}
+        <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a>Account Settings</a></li>
+        <li class="divider"></li>
+        <li><a id="logout">Logout</a>
+      </ul>
+    </li>
+  {{/if}}
+</template>
+
+<template name="user_loggedout">
+  <li><a id="login" href="#">Login with GitHub</a></li>
+</template>
+
+<template name="ask_question">
+  Ask Question template here...
+</template>

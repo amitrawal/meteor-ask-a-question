@@ -1,0 +1,36 @@
+<template name="questionList"> 
+  <div id="mainbar">
+    <div class="subheader">
+      <h1>Questions</h1>
+      <div id="tabs">
+        <a class="active" title="questions that have been asked, answered, or updated recently">active</a>
+        <a title="questions with the most views, answers, and votes over the last few days">hot</a>
+      </div>
+    </div>
+    <div id="qlist-wrapper">      
+      {{#each questions}}
+        {{> questionListItem}}      
+      {{/each}}
+    </div>
+  </div>
+  <div class="sidebar">
+    {{> sidebarAdvertisment}}
+    {{> recentTags}}
+  </div>
+</template>
+
+<template name="recentTags">
+  <div id="recent-tags" class="module">
+      <h4>Recent Tags</h4>
+      <div id="recent-tags-list">
+        {{#each tags}}        
+          <a class="post-tag">{{tag_text}}</a>
+          <span class="item-multiplier">
+            <span class="item-multiplier-x">×</span>&nbsp;
+            <span class="item-multiplier-count">{{count}}</span>
+          </span>
+          <br>
+        {{/each}}
+      </div>
+  </div>
+</template>

@@ -1,0 +1,43 @@
+<template name="showQuestion">
+  {{#with question}}
+    <div>      
+      <div id="question-header">
+        <h1>
+          <a class="question-hyperlink">{{title}}</a>
+          {{#if canEdit}}
+            <a class="quesiton-edit-hyperlink" href="/questions/{{_id}}/edit">Edit</a>
+          {{/if}}
+        </h1>
+      </div>            
+      <div id="mainbar">
+        <div id="question" class="question">
+          <table>
+            <tbody>
+              <tr>
+                <td class="votecell">
+                  <div class="vote">                  
+                    <a title="This question shows research effort; it is useful and clear (click again to undo)" class="vote-up-off">up vote</a>
+                    <span class="vote-count-post">{{totalVotes}}</span>
+                    <a title="This question does not show any research effort; it is unclear or not useful (click again to undo)" class="vote-down-off">down vote</a>                                    
+                  </div>
+                </td>                
+                <td class="postcell">
+                  <div>
+                      <div class="post-text">{{description}}</div>
+                      <div class="post-tag-list">
+                        {{#each tags}}
+                          <a class="post-tag" href="#">{{this}}</a>
+                        {{/each}}
+                      </div>
+                  </div>
+                </td>                
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div id="sidebar">
+        {{> sidebarAdvertisment}}
+      </div>
+    </div>
+  {{/with}}
+</template>
