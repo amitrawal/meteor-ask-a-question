@@ -7,6 +7,6 @@ Template.questionListItem.helpers({
   },
   ownerName : function () {
     if(author = Meteor.users.findOne(this.userId))
-      return author.profile.name;
+      return author.profile ? user.profile.name : 'n/a';
   }
 });

@@ -3,6 +3,13 @@ Meteor - Ask A Question
 
 A sample application created in Meteor.
 
+How to run?
+---------------------
+
+- Install Meteor
+- Install meteorite (More info @ https://github.com/oortcloud/meteorite)
+- Go to project folder and type "mrt"
+
 Features
 ---------------------
 
