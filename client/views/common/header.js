@@ -13,15 +13,7 @@ Template.user_loggedin.events({
 Template.user_loggedout.events({
   "click #login": function(e, tmpl) {
     e.preventDefault();
-    Meteor.loginWithGithub({
-      requestPermissions: ['user', 'public_repo']
-      }, function (err) {
-      if (err) {
-        // Error Handling
-      } else {
-        // Alert?
-      }      
-    });
+    Meteor.Router.to('/signin')
   }
 });
 

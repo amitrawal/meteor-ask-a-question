@@ -1,0 +1,34 @@
+<template name="user_complete_profile">
+  <div class="grid-small grid-block dialog user-edit">
+    {{#with user}}
+    <div>
+      Please fill in details below to finish signing up.
+    </div>
+    <form>
+      {{#if doesNotHaveEmail this}}
+        <div class="control-group">
+          <label>Email</label>
+          <div class="controls">
+            <input name="email" type="text" value="{{profile.email}}" />
+          </div>
+        </div>
+      {{else}}
+        <input name="email" type="hidden" value="{{email}}" />
+      {{/if}}
+      {{#if doesNotHaveScreenName this}}
+        <div class="control-group">
+          <label>Screen Name</label>
+          <div class="controls">
+            <input name="screenname" type="text" value="{{profile.name}}" />
+          </div>
+        </div>
+      {{else}}
+        <input name="screenname" type="hidden" value="{{screenName}}" />
+      {{/if}}
+      <div class="form-actions">
+        <input type="submit" class="button" value="Submit" />
+      </div>
+    </form>
+    {{/with}}
+  </div>
+</template>

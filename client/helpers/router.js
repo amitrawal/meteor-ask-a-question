@@ -20,7 +20,9 @@ Meteor.Router.add({
     Session.set("selectedQuestionId", questionId);
     Session.set("selectedTab", null);
     return 'questionEdit';
-  }}
+  }},
+  '/signin': 'user_signin',
+  '/signup': 'user_signup'
 });
 
 Meteor.Router.filters({
@@ -30,14 +32,26 @@ Meteor.Router.filters({
     else if (Meteor.loggingIn())
       return 'loading';
     else
-      return 'accessDenied';
+      return 'user_signin';
   },
   'clearErrors': function(page) {
     clearErrors();
     return page;
+  },
+  // if the user is logged in but their profile isn't filled out enough
+  requireProfile: function(page) {
+    var user = Meteor.user();
+    if (user && !Meteor.loggingIn() && !userProfileComplete(user)){      
+      Session.set('selectedUserId', user._id);
+      return 'user_complete_profile';
+    } else {
+      console.log(page);
+      return page;
+    }
   }
 });
 
+Meteor.Router.filter('requireProfile');
 Meteor.Router.filter('requireLogin', {only: ['questionSubmit', 'questionEdit']});
 // Clear previous errors when a url is accessed.
 Meteor.Router.filter('clearErrors');
