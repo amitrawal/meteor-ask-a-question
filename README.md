@@ -13,7 +13,7 @@ How to run?
 Features
 ---------------------
 
-* SignIn Via Github
+* SignIn Via Github or regular sigin/signup
 * Styling via Twitter Bootstrap
 * Routes using meteor-routes
 * Listing Questions
