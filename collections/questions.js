@@ -72,27 +72,40 @@ Meteor.methods({
     if (!user)
       throw new Meteor.Error(401, "You need to login to upvote");
     
-    Questions.update({
-      _id: questionId,
-      upVotes: {$ne: user._id},
-      downVotes: {$ne: user._id}
-      }, {
-      $addToSet: {upVotes: user._id}
+    Questions.update({_id: questionId},{
+      $addToSet: {upVotes: user._id},
+      $pull: {downVotes: user._id}      
     });
   },
+  cancelVote: function(questionId) {
+    var user = Meteor.user();
+    // ensure the user is logged in
+    if (!user)
+      throw new Meteor.Error(401, "You need to login to upvote");
 
+    Questions.update({_id: questionId}, {
+      $pull: {upVotes: user._id}
+    });
+  },
   downVote: function(questionId) {
     var user = Meteor.user();
     // ensure the user is logged in
     if (!user)
       throw new Meteor.Error(401, "You need to login to downvote");
     
-    Questions.update({
-      _id: questionId,
-      upVotes: {$ne: user._id},
-      downVotes: {$ne: user._id}
-      }, {
-      $addToSet: {downVotes: user._id}
+    Questions.update({_id: questionId}, {
+      $addToSet: {downVotes: user._id},
+      $pull: {upVotes: user._id}      
+    });  
+  },
+  cancelDownVote: function(questionId) {
+    var user = Meteor.user();
+    // ensure the user is logged in
+    if (!user)
+      throw new Meteor.Error(401, "You need to login to downvote");
+    
+    Questions.update({_id: questionId},{      
+      $pull: {downVotes: user._id}
     });
   }
 });

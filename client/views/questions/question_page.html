@@ -15,10 +15,26 @@
             <tbody>
               <tr>
                 <td class="votecell">
-                  <div class="vote">                  
-                    <a title="This question shows research effort; it is useful and clear (click again to undo)" class="vote-up-off">up vote</a>
-                    <span class="vote-count-post">{{totalVotes}}</span>
-                    <a title="This question does not show any research effort; it is unclear or not useful (click again to undo)" class="vote-down-off">down vote</a>                                    
+                  <div class="vote">
+                    {{#if upVoted}}
+                      <a title="This question shows research effort; it is useful and clear (click again to undo)" class="vote-up-on cancel-upvote">up vote</a>
+                    {{else}}
+                      {{#if downVoted}}
+                        <a title="This question shows research effort; it is useful and clear (click again to undo)" class="vote-up-off">up vote</a>
+                      {{else}}
+                        <a title="This question shows research effort; it is useful and clear (click again to undo)" class="vote-up-off upvote">up vote</a>
+                      {{/if}}
+                    {{/if}}
+                    <span class="vote-count-post">{{voteScore}}</span>
+                    {{#if downVoted}}
+                      <a title="This question does not show any research effort; it is unclear or not useful (click again to undo)" class="vote-down-on cancel-downvote">down vote</a>
+                    {{else}}
+                      {{#if upVoted}}
+                        <a title="This question does not show any research effort; it is unclear or not useful (click again to undo)" class="vote-down-off">down vote</a>
+                      {{else}}
+                        <a title="This question does not show any research effort; it is unclear or not useful (click again to undo)" class="vote-down-off downvote">down vote</a>
+                      {{/if}}
+                    {{/if}}
                   </div>
                 </td>                
                 <td class="postcell">
