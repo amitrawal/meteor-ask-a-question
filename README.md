@@ -20,3 +20,4 @@ Features
 * Creating/Editing Questions
 * Permission checking when Editing Questions
 * Data validations and displaying of validation message.
+* Upvote / Downvote a question
