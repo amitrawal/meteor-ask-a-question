@@ -354,17 +354,12 @@ td.postcell {
   height: 32px;
   width: 32px;
   border: solid 1px gray;
+  margin-bottom: 3px;
 }
 
 .user-info .user-action-time {
   margin-bottom: 4px;
   margin-top: 2px;
-}
-
-.user-info .user-gravatar32 {
-  float: left;
-  height: 32px;
-  width: 32px;
 }
 
 .user-info .user-details {
