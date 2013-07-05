@@ -28,7 +28,7 @@
           </td>
           <td class="answercell">
             <div class="post-text">
-              <p>{{body}}</p>
+              <p>{{{formattedBody}}}</p>
             </div>
             <table class="fw">
               <tbody>
@@ -36,7 +36,7 @@
                   <td class="vt">
                     <div>&nbsp;</div>
                   </td>
-                  <td class="post-signature">
+                  <td class="post-signature {{ownerClass}}">
                     <div class="user-info">
                       <div class="user-action-time">
                         answered <span class="relativeTime">{{ago createdAt}}</span>

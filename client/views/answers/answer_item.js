@@ -15,6 +15,13 @@ Template.answerItem.helpers({
     var user = Meteor.user();   
     if(!user) return false;    
     return hasDownVoted(this, user);
+  },
+  ownerClass: function () {
+    var question = Questions.findOne(this.questionId);    
+    return question.userId === Meteor.userId() ? 'owner' : '';
+  },
+  formattedBody: function () {
+    return nl2br(this.body);
   }
 });
 

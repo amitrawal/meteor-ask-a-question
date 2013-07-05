@@ -25,6 +25,9 @@ Template.showQuestion.helpers({
   },
   ownerName : function () {
     return getDisplayNameById(this.userId);
+  },
+  formattedDescription : function () {
+    return nl2br(this.description);
   }
 });
 
