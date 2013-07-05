@@ -1,0 +1,15 @@
+<template name="answerList">
+  {{#if hasAnswers}}
+    <div id="answers">
+      <div id="answers-header">
+          <div class="subheader answers-subheader">              
+              <h2>{{pluralize totalAnswers 'Answer'}}</h2>
+              <div id="tabs"></div>
+          </div>
+      </div>
+      {{#each answerList}}
+        {{> answerItem}}
+      {{/each}}
+    </div>
+  {{/if}}
+</template>

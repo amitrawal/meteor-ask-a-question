@@ -15,3 +15,7 @@ Meteor.publish('questions', function() {
 Meteor.publish('singleQuestion', function(id) {
   return Questions.find(id);
 });
+
+Meteor.publish('answers', function(questionId) {
+  return Answers.find({questionId : questionId});
+});

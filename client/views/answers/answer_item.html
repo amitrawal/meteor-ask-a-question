@@ -1,0 +1,61 @@
+<template name="answerItem">
+  <div class="answer">
+    <table class="fw">
+      <tbody>
+        <tr>
+          <td class="votecell">
+            <div class="vote">                  
+              {{#if upVoted}}
+                <a title="This answer shows research effort; it is useful and clear (click again to undo)" class="vote-up-on cancel-upvote">up vote</a>
+              {{else}}
+                {{#if downVoted}}
+                  <a title="This answer shows research effort; it is useful and clear (click again to undo)" class="vote-up-off">up vote</a>
+                {{else}}
+                  <a title="This answer shows research effort; it is useful and clear (click again to undo)" class="vote-up-off upvote">up vote</a>
+                {{/if}}
+              {{/if}}
+              <span class="vote-count-post">{{voteScore}}</span>
+              {{#if downVoted}}
+                <a title="This answer does not show any research effort; it is unclear or not useful (click again to undo)" class="vote-down-on cancel-downvote">down vote</a>
+              {{else}}
+                {{#if upVoted}}
+                  <a title="This answer does not show any research effort; it is unclear or not useful (click again to undo)" class="vote-down-off">down vote</a>
+                {{else}}
+                  <a title="This answer does not show any research effort; it is unclear or not useful (click again to undo)" class="vote-down-off downvote">down vote</a>
+                {{/if}}
+              {{/if}}             
+            </div>
+          </td>
+          <td class="answercell">
+            <div class="post-text">
+              <p>{{body}}</p>
+            </div>
+            <table class="fw">
+              <tbody>
+                <tr>
+                  <td class="vt">
+                    <div>&nbsp;</div>
+                  </td>
+                  <td class="post-signature">
+                    <div class="user-info">
+                      <div class="user-action-time">
+                        answered <span class="relativeTime">{{ago createdAt}}</span>
+                      </div>
+                      <div class="user-gravatar32">
+                        <div>
+                          <img width="32" height="32" />
+                        </div>
+                      </div>
+                      <div class="user-details">
+                        <a href="#">{{ownerName}}</a>
+                      </div>
+                    </div>
+                  </td>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>        
+  </div>
+</template>

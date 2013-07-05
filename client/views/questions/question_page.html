@@ -39,18 +39,45 @@
                 </td>                
                 <td class="postcell">
                   <div>
-                      <div class="post-text">{{description}}</div>
+                      <div class="post-text"><p>{{description}}</p></div>
                       <div class="post-tag-list">
                         {{#each tags}}
                           <a class="post-tag" href="#">{{this}}</a>
                         {{/each}}
                       </div>
+                      <table class="fw">
+                        <tbody>
+                          <tr>
+                            <td class="vt">
+                              <div>&nbsp;</div>
+                            </td>
+                            <td class="post-signature owner">
+                              <div class="user-info">
+                                <div class="user-action-time">
+                                  asked <span class="relativeTime">{{ago createdAt}}</span>
+                                </div>
+                                <div class="user-gravatar32">
+                                  <div>
+                                    <img width="32" height="32" />
+                                  </div>
+                                </div>
+                                <div class="user-details">
+                                  <a href="#">{{ownerName}}</a>
+                                </div>
+                              </div>
+                            </td>
+                        </tbody>
+                      </table>
                   </div>
                 </td>                
             </tbody>
           </table>
         </div>
-      </div>
+        {{> answerList}}
+        {{#if canAnswer}}
+          {{> submit_answer}}
+        {{/if}}
+      </div>      
       <div id="sidebar">
         {{> sidebarAdvertisment}}
       </div>

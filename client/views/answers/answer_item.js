@@ -1,50 +1,53 @@
-Template.showQuestion.helpers({
-  question: function () {
-    var question = Questions.findOne({_id: Session.get("selectedQuestionId")});
-    return question;
-  },
+Template.answerItem.helpers({
   voteScore: function () {
     return voteScore(this);
   },
-  canEdit: function () {
-    return ownsDocument(Meteor.userId(), this);
+  ownerName : function () {
+    return getDisplayNameById(this.userId);
   },
   upVoted: function () {
-    var user = Meteor.user();    
+    var user = Meteor.user();
+
     if(!user) return false; 
     return hasUpVoted(this, user);
   },
   downVoted: function () {
-    var user = Meteor.user();
-    if(!user) return false;
+    var user = Meteor.user();   
+    if(!user) return false;    
     return hasDownVoted(this, user);
-  },
-  canAnswer: function () {
-    var user = Meteor.user();    
-    return !!user;
-  },
-  ownerName : function () {
-    return getDisplayNameById(this.userId);
   }
 });
 
-Template.showQuestion.events({
-  "click .question a.upvote" : function (event) {    
+Template.answerItem.events({
+  "click .answer a.upvote" : function (event) {    
     event.preventDefault();
-    
-    var question = this;    
+        
     if(!Meteor.user()) {
       Meteor.Router.to('/signin');
       throwError('Please Login first')
     }
 
-    Meteor.call('upVoteQuestion', this._id, function (error) {
+    Meteor.call('upVoteAnswer', this._id, function (error) {
       if(error) {
         throwError(e.reason);
       }
     });
   },
-  "click .question a.cancel-upvote" : function (event) {
+  "click .answer a.cancel-upvote" : function (event) {
+    event.preventDefault();
+
+    if(!Meteor.user()) {
+      Meteor.Router.to('/signin');
+      throwError('Please Login first')
+    }
+
+    Meteor.call('cancelUpVoteAnswer', this._id, function (error) {
+      if(error) {
+        throwError(e.reason);
+      }
+    });
+  },
+  "click .answer a.downvote" : function (event) {
     event.preventDefault();
     var question = this;
     if(!Meteor.user()) {
@@ -52,13 +55,13 @@ Template.showQuestion.events({
       throwError('Please Login first')
     }
 
-    Meteor.call('cancelUpVoteQuestion', this._id, function (error) {
+    Meteor.call('downVoteAnswer', this._id, function (error) {
       if(error) {
         throwError(e.reason);
       }
     });
   },
-  "click .question a.downvote" : function (event) {
+  "click .answer a.cancel-downvote" : function (event) {
     event.preventDefault();
     var question = this;
     if(!Meteor.user()) {
@@ -66,21 +69,7 @@ Template.showQuestion.events({
       throwError('Please Login first')
     }
 
-    Meteor.call('downVoteQuestion', this._id, function (error) {
-      if(error) {
-        throwError(e.reason);
-      }
-    });
-  },
-  "click .question a.cancel-downvote" : function (event) {
-    event.preventDefault();
-    var question = this;
-    if(!Meteor.user()) {
-      Meteor.Router.to('/signin');
-      throwError('Please Login first')
-    }
-
-    Meteor.call('cancelDownVoteQuestion', this._id, function (error) {
+    Meteor.call('cancelDownVoteAnswer', this._id, function (error) {
       if(error) {
         throwError(e.reason);
       }

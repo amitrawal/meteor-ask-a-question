@@ -6,7 +6,7 @@ Template.questionSubmit.events({
       title: $(event.target).find('[name=title]').val(),
       description: $(event.target).find('[name=description]').val(),
       tags: $(event.target).find('[name=tags]').val()
-    }
+    };
     
     Meteor.call('askQuestion', question, function(error, id) {
       if (error) {

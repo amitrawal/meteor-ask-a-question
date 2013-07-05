@@ -7,7 +7,7 @@
           <div>votes</div>
         </div>
       <div class="status answered-accepted">
-        <div class="mini-counts">0</div>
+        <div class="mini-counts">{{answers}}</div>
           <div>answer</div>
       </div>
       <div class="views">
@@ -26,8 +26,8 @@
         {{/each}}
       </div>
       <div class="started">
-        <a class="started-link"><span class="relativeTime">{{ago}}</span></a>
-        <a href="#">{{ownerName}}</a>        
+        <a class="started-link"><span class="relativeTime">{{ago createdAt}}</span></a>
+        <a href="#">{{ownerName}}</a>
       </div>
     </div>  
   </div>

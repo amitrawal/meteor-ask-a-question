@@ -27,6 +27,10 @@ a:hover {
   text-decoration: none;
 }
 
+.vt {
+  vertical-align: top;
+}
+
 #mainbar, .mainbar {
   float: left;
   margin: 0 10px 20px 0;
@@ -57,6 +61,17 @@ a:hover {
   line-height: 21px;
   margin: 5px 0;
   float: left;
+}
+
+.subheader h2 {
+    color: #222222 !important;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 0 10px;
+}
+.subheader h2 {
+    float: left;
+    line-height: 34px;
 }
 
 .subheader #tabs {
@@ -311,6 +326,65 @@ td.postcell {
   margin-bottom: 10px;
 }
 
+.fw {
+  margin-bottom: 4px;
+  width: 656px;
+}
+
+.owner {
+  background-color: #EAEAEA;
+}
+
+.post-signature {
+  height: 58px;
+  padding-left: 5px;
+  padding-top: 2px;
+  text-align: left;
+  vertical-align: top;
+  width: 175px;
+}
+
+.user-info {
+  height: 35px;
+  width: 185px;
+}
+
+.user-info .user-gravatar32 {
+  float: left;
+  height: 32px;
+  width: 32px;
+  border: solid 1px gray;
+}
+
+.user-info .user-action-time {
+  margin-bottom: 4px;
+  margin-top: 2px;
+}
+
+.user-info .user-gravatar32 {
+  float: left;
+  height: 32px;
+  width: 32px;
+}
+
+.user-info .user-details {
+  float: left;
+  margin-left: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 145px;
+}
+
+.user-details {
+  color: #888888;
+  line-height: 17px;
+}
+
+.relativetime {
+  text-decoration: none;
+  text-shadow: 0 1px 0 #FFFFFF;
+}
+
 
 .vote-up-off, .vote-up-on, .vote-down-off, .vote-down-on, .comment-up-off, .comment-up-on, .comment-flag, .flag-off, .vote-accepted-off, .vote-accepted-on {
   font-size: 1px;
@@ -426,7 +500,107 @@ td.postcell {
 }
 
 .github-signup {
+
+  border-bottom: 1px solid #DFDBDB;
   margin-bottom: 20px;
   padding-bottom: 20px;
-  border-bottom: 1px solid #dfdbdb; 
+
+  /*margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #dfdbdb; */
+}
+
+
+.github-signup  .button {
+  background: none repeat scroll 0 0 #00ACED;
+  height: 26px;
+  line-height: 26px;
+  margin: 0;
+  padding: 0 10px;
+  text-align: center;
+  display: block;
+  color: #fff;
+}
+
+.dialog {
+  margin-bottom: 10px;
+}
+
+.dialog h2 {
+  margin-bottom: 10px;
+  padding-bottom: 15px;
+  text-align: center;
+  font-size: 25px;
+}
+.grid-small {
+  margin: 0 auto;
+  width: 320px;
+}
+
+.grid-block {
+  background: none repeat scroll 0 0 #EFEFEF;
+  border-radius: 3px 3px 3px 3px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+  margin-bottom: 10px;
+  padding: 15px;
+}
+
+.signin .form-actions {
+  background-color:  #EFEFEF;
+  padding: 12px 2px 4px;
+}
+
+.signin .control-label {
+  width: 65px;
+}
+
+.signin .controls {
+  margin-left: 98px;
+}
+
+/*answers*/
+
+.space {
+  color: #222222;
+  font-size: 18px;
+  padding-top: 20px;
+  line-height: 10px;
+}
+
+#answers {
+  clear: both;
+  padding-top: 10px;
+  width: 738px;
+}
+
+#answers-header {
+  margin-top: 10px;
+  width: 738px;
+}
+
+.answer {
+  border-bottom: 1px solid #CCCCCC;
+  border-top: 1px solid #FFFFFF;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  width: 738px;
+}
+
+.answer table td {
+  vertical-align: top;
+}
+
+td.answercell {
+  vertical-align: top;
+}
+
+.post-text {
+  font-size: 14px;
+  line-height: 17px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  width: 660px;
+}
+.post-text p {
+  word-wrap: break-word;
 }
