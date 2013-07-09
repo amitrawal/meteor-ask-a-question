@@ -1,0 +1,50 @@
+<template name="userProfilePage">
+   <div id="mainbar-full" class="user-show-new">
+    {{> userProfileHeader}}
+    {{#with user}}
+      <div id="user-info-container">
+        <div id="large-user-info" class="user-header" style="display: block;">
+          <div class="user-header-left">
+            <div class="gravatar">
+              <a href="#">
+                <div class="">
+                  <img width="128" height="128" class="logo" alt="" src="/images/missing_gravatar.png">
+                </div>
+              </a>
+            </div>
+            <div class="data">
+              <table>
+                <tbody>
+                  <tr>
+                    <th>bio</th>
+                    <td>website</td>
+                    <td>{{profile.website}}</td>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <td>location</td>
+                    <td class="adr">{{profile.location}}</td>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <td>email</td>
+                    <td>{{profile.emai}}</td>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <td>real name</td>
+                    <td>{{profile.realname}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="user-about-me note">
+            {{{formattedAboutMe}}}
+          </div>
+          <br class="clear">
+        </div>      
+      </div>
+    {{/with}}
+  </div>  
+</template>

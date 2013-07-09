@@ -1,0 +1,95 @@
+<template name="userEdit">
+  <div id="mainbar-full" class="user-show-new">
+    {{> userProfileHeader}}
+    <table id="user-edit-table" width="100%">
+      <tbody>
+        <tr>
+          <td style="vertical-align: top; text-align: center; padding: 20px; width:128px;">
+            <div>
+              <img width="128px" height="128px" src="/images/missing_gravatar.png" />
+            </div>
+          </td>
+          <td style="vertical-align: top;">
+            <h2>Registered User</h2>
+            {{#with currentUser.profile}}
+              <form id="user-edit-form">
+                <div style="position:relative;">
+                  <table style="width:100%">
+                    <tbody>
+                      <tr>
+                        <td><label for="screenname">Screen Name</label></td>
+                        <td>
+                          <input style="width:260px;" value="{{name}}" type="text" name="screenname" placeholder="Enter Screen Name" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><label for="email">Email</label></td>
+                        <td>
+                          <input style="width:390px;" value="{{email}}" type="text" name="email" placeholder="Enter Email Address" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><label for="realname">Real Name</label></td>
+                        <td>
+                          <input style="width:260px;" value="{{realname}}" type="text" name="realname" placeholder="Enter Real Name" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><label for="website">Website</label></td>
+                        <td>
+                          <input style="width:260px;" value="{{website}}" type="text" name="website" placeholder="Enter Website" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><label for="location">Location</label></td>
+                        <td>
+                          <input style="width:260px;" value="{{location}}" type="text" name="location" placeholder="Enter Location" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="vertical-align:top; padding-top:18px;">
+                          <label for="aboutme">About Me</label>
+                        </td>
+                        <td>
+                          <textarea placeholder="Enter something about you" style="height:200px;line-height:1.2;padding:3px;width:640px;" name="aboutme">{{aboutme}}</textarea>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td class="space">
+                          <div class="form-submit">
+                            <input type="submit" class="btn" id="submit-button" value="Save Profile">
+                            <a id="cancel" name="cancel">Cancel</a>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div style="position: absolute; top: 0; right: 15px; width: 235px; padding: 10px;" class="module newuser newsletter-signup">
+                    <h4>Weekly Email Newsletter</h4>
+                    <p>Sign up for a weekly email with:</p>
+                    <ul>
+                        <li>Top questions and answers</li>
+                        <li>Important announcements</li>
+                        <li>Unanswered questions</li>
+                    </ul>
+                    
+                    <div style="float: left; width: 20px;">
+                        <input type="checkbox" style="margin: 0px; opacity: 1;" id="newsletter-subscribe" name="newsletter-subscribe">
+                    </div>
+                    <div style="float: left; width: 210px;">
+                      <label for="newsletter-subscribe">Send me the weekly newsletter</label>
+                      <p id="newsletter-message"></p>
+                    </div>
+
+                    <br class="cbt">
+                  </div>
+                </div>
+              </form>
+            {{/with}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>

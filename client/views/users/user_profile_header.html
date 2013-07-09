@@ -1,0 +1,8 @@
+<template name="userProfileHeader">
+  <div class="subheader">        
+    <h1 id="user-displayname">{{user.profile.name}}</h1>    
+    <div class="sub-header-links fr">
+      <a class="{{#if userProfileTabIs 'edit'}}current-section{{/if}}" href="/users/{{user._id}}/edit">edit</a>
+    </div>
+  </div>
+</template>

@@ -19,7 +19,8 @@ Features
 * Listing Questions
 * Creating/Editing Questions
 * Permission checking when Editing Questions
-* Data validations and displaying of validation message.
+* Data validations and displaying of validation message
 * Upvote / Downvote a question
 * Ability to add answer(s) for a question
 * Upvote / Downvote an answer
+* View and Update user profile information

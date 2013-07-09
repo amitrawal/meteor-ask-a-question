@@ -22,7 +22,17 @@ Meteor.Router.add({
     return 'questionEdit';
   }},
   '/signin': 'user_signin',
-  '/signup': 'user_signup'
+  '/signup': 'user_signup',
+  '/users/:id/edit': {as: 'userEdit', to: function(userId) {
+    Session.set("selectedUserId", userId);
+    Session.set("selectedProfileTab", "edit")
+    return 'userEdit';
+  }},
+  '/users/:id': {as: 'userProfilePage', to: function(userId) {
+    Session.set("selectedUserId", userId);
+    Session.set("selectedProfileTab", null)
+    return 'userProfilePage';
+  }}
 });
 
 Meteor.Router.filters({
@@ -44,14 +54,21 @@ Meteor.Router.filters({
     if (user && !Meteor.loggingIn() && !userProfileComplete(user)){      
       Session.set('selectedUserId', user._id);
       return 'user_complete_profile';
-    } else {
-      console.log(page);
+    } else {     
       return page;
     }
+  },
+  requireCurrentUser: function(page) {
+    var user = Meteor.user();
+    if(Session.get("selectedUserId") !== user._id)
+      return 'accessDenied';
+
+    return page;
   }
 });
 
 Meteor.Router.filter('requireProfile');
-Meteor.Router.filter('requireLogin', {only: ['questionSubmit', 'questionEdit']});
+Meteor.Router.filter('requireLogin', {only: ['questionSubmit', 'questionEdit', 'userEdit']});
+Meteor.Router.filter('requireCurrentUser', {only: ['userEdit']});
 // Clear previous errors when a url is accessed.
 Meteor.Router.filter('clearErrors');
