@@ -7,10 +7,15 @@
         <a title="questions with the most views, answers, and votes over the last few days">hot</a>
       </div>
     </div>
+    
     <div id="qlist-wrapper">
       {{#each questions}}
         {{> questionListItem}}
       {{/each}}
+    </div>    
+    
+    <div class="well well-small cbt">
+      {{{ paginationButtons }}}
     </div>
   </div>
   <div class="sidebar">

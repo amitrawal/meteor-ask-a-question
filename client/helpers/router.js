@@ -1,3 +1,12 @@
+Meteor.Router.beforeRouting = function() {
+  console.log('// Before Routing //')
+  // reset all session variables that might be set by the previous route
+  Session.set("selectedQuestionId", null);
+  Session.set("selectedTab", null);
+  Session.set("selectedUserId", null);
+  Session.set("selectedProfileTab", null);
+}
+
 Meteor.Router.add({
   '/': {as: 'home', to: function () {
     Session.set("selectedTab", 'listQuestions');

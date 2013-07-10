@@ -1,5 +1,37 @@
+var _pager = new Meteor.Paginator({
+  templates: {
+    content: "questionList"
+  }, 
+  pagination: {
+    resultsPerPage: 5 //default limit
+  },
+  callbacks: {
+    onPagingCompleted: function(skip, limit) {
+      Session.set("pagingQuestionListSkip", skip);
+      Session.set("pagingQuestionListLimit", limit);
+    },
+    getDependentSubscriptionsHandles: function() {
+        return [Meteor.questionListHandle];
+    },
+    getTotalRecords: function(cb) {
+      //you need to return the total record count here
+      //using the provided callback
+      Meteor.call("totalQuestionsCount", function(err, result) {
+        cb(result);
+      });
+    },
+    onTemplateRendered: function() {
+      //regular render code
+    },
+    onTemplateCreated: function() {
+      Session.set("pagingQuestionListSkip", 0);
+      Session.set("pagingQuestionListLimit", 5);
+    }
+  }
+});
+
 Template.questionList.questions = function () {
-  return Questions.find().fetch();
+  return Questions.find();
 };
 
 Template.recentTags.tags = function () {
@@ -25,3 +57,5 @@ Template.recentTags.tags = function () {
 Template.recentTags.tag_text = function () {
   return this.tag ;
 };
+
+

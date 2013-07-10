@@ -1,9 +1,5 @@
 Answers = new Meteor.Collection("answers");
 
-Answers.allow({
-  update : ownsDocument
-});
-
 Meteor.methods({
   createAnswer : function(questionId, body) {
     var user = Meteor.user(),
@@ -28,5 +24,36 @@ Meteor.methods({
 
     Questions.update(questionId, {$inc: {answers: 1}});
     return newAnswerId;
+  },
+  acceptAnswer : function (answerId, questionId) {
+    var question = Questions.findOne(questionId),
+        user = Meteor.user();
+
+    if(!canUpdateAnswerById(user._id, answerId, ['acceptedAt']))
+      throw new Meteor.Error(401, "You are not allowed to accept answer for this question.");
+
+    // Set acceptedAt to null for all the answers related to the quesiton.
+    Answers.update(
+      {questionId : questionId},
+      {$set : {acceptedAt : null}},
+      {multi: true}
+    );
+
+    // Set the acceptedAt for the answer which is to be accepted.
+    Answers.update(
+      {_id : answerId}, 
+      {$set : {acceptedAt : new Date().getTime()}}
+    );
+  },
+  unacceptAnswer : function (answerId) {
+     var user = Meteor.user();
+
+    if(!canUpdateAnswerById(user._id, answerId, ['acceptedAt']))
+      throw new Meteor.Error(401, "You are not allowed to unaccept answer for this question.");
+
+    Answers.update(
+      {_id : answerId}, 
+      {$set : {acceptedAt : null}}
+    );
   }
 });

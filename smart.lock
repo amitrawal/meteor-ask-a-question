@@ -3,7 +3,8 @@
   "dependencies": {
     "basePackages": {
       "router": {},
-      "moment": {}
+      "moment": {},
+      "paginator": {}
     },
     "packages": {
       "router": {
@@ -15,6 +16,11 @@
         "git": "https://github.com/possibilities/meteor-moment.git",
         "tag": "v1.7.0",
         "commit": "c64b6ec0e714b9556f4b6643d430b868ba69d3d7"
+      },
+      "paginator": {
+        "git": "https://github.com/TimHeckel/meteor-paginator.git",
+        "tag": "v0.0.7",
+        "commit": "082bbfdee5f7a05a51bc7be90d258292d1cc67f6"
       },
       "page-js-ie-support": {
         "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",

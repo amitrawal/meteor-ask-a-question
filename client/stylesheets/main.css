@@ -98,6 +98,12 @@ a:hover {
   color: #000;
 }
 
+#qlist-wrapper {
+  clear: both;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+  
 .question-summary:first-child {
   border-top: medium none;
 }
@@ -423,6 +429,18 @@ td.postcell {
   background-image: url("/images/sprites.png");
   background-repeat: no-repeat;
   overflow: hidden;
+}
+
+.vote-accepted-off, .vote-accepted-on, .vote-accepted-bounty {
+  background-position: -2px -529px;
+  display: block;
+  height: 43px;
+  margin: 0 auto;
+  width: 40px;
+}
+
+.vote-accepted-on {
+  background-position: -2px -436px;
 }
 
 .vote-up-on {
@@ -772,4 +790,8 @@ h1#user-displayname {
     padding-right: 0;
     white-space: normal;
     width: 100%;
+}
+
+#mainbar .well {
+  box-shadow: 0px;
 }

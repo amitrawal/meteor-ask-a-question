@@ -1,9 +1,5 @@
 Questions = new Meteor.Collection("questions");
 
-Questions.allow({
-  update : ownsDocument
-});
-
 Meteor.methods({
   askQuestion: function(questionAttributes) {
     var user = Meteor.user();
@@ -65,5 +61,8 @@ Meteor.methods({
     Questions.update(questionId, {$set : question});
     
     return true;
+  },  
+  totalQuestionsCount: function() {
+    return Questions.find().count();
   }
 });

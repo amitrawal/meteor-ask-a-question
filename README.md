@@ -16,7 +16,7 @@ Features
 * SignIn Via Github or regular sigin/signup
 * Styling via Twitter Bootstrap
 * Routes using meteor-routes
-* Listing Questions
+* Listing Questions (with pagination)
 * Creating/Editing Questions
 * Permission checking when Editing Questions
 * Data validations and displaying of validation message
@@ -24,3 +24,4 @@ Features
 * Ability to add answer(s) for a question
 * Upvote / Downvote an answer
 * View and Update user profile information
+* Ability to Accept an answer (permissions checking)

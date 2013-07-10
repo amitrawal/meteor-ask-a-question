@@ -23,7 +23,25 @@
                 {{else}}
                   <a title="This answer does not show any research effort; it is unclear or not useful (click again to undo)" class="vote-down-off downvote">down vote</a>
                 {{/if}}
-              {{/if}}             
+              {{/if}}
+
+              {{#if isQuestionAccepted}}
+                {{#if isQuestionOwner}}
+                  {{#if isAcceptedAnswer}}
+                    <a title="click to set this answer as your accepted answer; click again to toggle" class="vote-accepted-on">unaccept</a>
+                  {{else}}
+                    <a title="click to unaccept this answer; click again to toggle" class="vote-accepted-off">accept</a>
+                  {{/if}}
+                {{else}}
+                  {{#if isAcceptedAnswer}}
+                    <span title="The question owner accepted this as the best answer Mar 2 '11 at 15:46" class="vote-accepted-on load-accepted-answer-date">accepted</span>
+                  {{/if}}
+                {{/if}}
+              {{else}}
+                {{#if isQuestionOwner}}
+                  <a title="click to set this answer as your accepted answer; click again to toggle" class="vote-accepted-off">accept</a>
+                {{/if}}
+              {{/if}}
             </div>
           </td>
           <td class="answercell">
