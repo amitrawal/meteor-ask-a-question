@@ -1,7 +1,7 @@
 Session.set('singleQuestionReady', false);
 Session.set('singleAnswerReady', false);
 
-// Meteor.subscribe("currentUser");
+Meteor.subscribe("currentUser");
 Meteor.subscribe("allUsers");
 
 questionListSubscription = function(find, options, skip, limit) {

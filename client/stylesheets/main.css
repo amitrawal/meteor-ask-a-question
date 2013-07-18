@@ -150,7 +150,7 @@ a:hover {
   float: left;
   height: 38px;
   margin: 0 3px 0 0;
-  width: 48px;
+  width: 50px;
 }
 
 .answered-accepted {
@@ -158,6 +158,10 @@ a:hover {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e3f5ab), color-stop(14%, #e3f5ab), color-stop(100%, #bee08e));
   border-bottom: 1px solid #FFFFFF;
   border-top: 1px solid #E3E3E3;
+  color: #478875;
+}
+
+.answered {
   color: #478875;
 }
 

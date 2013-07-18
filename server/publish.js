@@ -1,6 +1,6 @@
-// Meteor.publish('currentUser', function() {
-//   return Meteor.users.find(this.userId);
-// });
+Meteor.publish('currentUser', function() {
+  return Meteor.users.find(this.userId);
+});
 
 Meteor.publish('allUsers', function() {
   //TODO: Based on the user permission, return only limited set of fields

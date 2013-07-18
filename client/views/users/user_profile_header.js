@@ -4,5 +4,8 @@ Template.userProfileHeader.helpers({
   },
   user : function () {
     return Meteor.users.findOne(Session.get("selectedUserId"));
+  },
+  isCurrentUser : function() {  	
+	return Meteor.user() && (Session.equals('selectedUserId', Meteor.user()._id));
   }
 });

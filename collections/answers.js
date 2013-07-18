@@ -41,12 +41,16 @@ Meteor.methods({
 
     // Set the acceptedAt for the answer which is to be accepted.
     Answers.update(
-      {_id : answerId}, 
+      {_id : answerId},
       {$set : {acceptedAt : new Date().getTime()}}
     );
+    
+    // Update  the acceptedAnswer property in question.
+    Questions.update(questionId, {$set : {acceptedAnswerId : answerId}});
   },
   unacceptAnswer : function (answerId) {
-     var user = Meteor.user();
+     var user = Meteor.user(),
+          answer = Answers.findOne(answerId);
 
     if(!canUpdateAnswerById(user._id, answerId, ['acceptedAt']))
       throw new Meteor.Error(401, "You are not allowed to unaccept answer for this question.");
@@ -55,5 +59,8 @@ Meteor.methods({
       {_id : answerId}, 
       {$set : {acceptedAt : null}}
     );
+
+    // Set the acceptedAnswer property of the question to null.
+    Questions.update(answer.questionId, {$unset : {acceptedAnswerId : answerId}});
   }
 });

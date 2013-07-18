@@ -4,12 +4,13 @@
     <div class="cp">
       <div class="votes">
         <div class="mini-counts">{{totalVotes}}</div>
-          <div>votes</div>
+          <div>{{pluralize 'vote' totalVotes}}</div>
         </div>
-      <div class="status answered-accepted">
-        <div class="mini-counts">{{answers}}</div>
-          <div>answer</div>
-      </div>
+      
+        <div class="status {{answerStatusCss}}">
+          <div class="mini-counts">{{answers}}</div>
+          <div>{{pluralize 'answer' answers}}</div>        
+        </div>
       <div class="views">
         <div class="mini-counts">0</div>
           <div>views</div>

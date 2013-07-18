@@ -4,5 +4,10 @@ Template.userProfilePage.helpers({
   },
   formattedAboutMe : function () {
     return nl2br(this.profile.aboutme);
+  },
+  canEditProfile : function () {
+  	var isAboutMeEmpty = isValueBlank(this.profile.aboutme),
+  		isCurrentUser =  Meteor.user() && (Session.get('selectedUserId') === Meteor.user()._id);
+  	return (isAboutMeEmpty && isCurrentUser);
   }
 });

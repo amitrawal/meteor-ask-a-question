@@ -40,7 +40,11 @@
             </div>
           </div>
           <div class="user-about-me note">
-            {{{formattedAboutMe}}}
+            {{#if canEditProfile}}
+              <a href="/users/{{_id}}/edit">Click here</a> to add.
+            {{else}}
+              {{{formattedAboutMe}}}
+            {{/if}}
           </div>
           <br class="clear">
         </div>      
