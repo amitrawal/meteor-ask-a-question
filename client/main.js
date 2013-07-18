@@ -4,9 +4,16 @@ Session.set('singleAnswerReady', false);
 // Meteor.subscribe("currentUser");
 Meteor.subscribe("allUsers");
 
+questionListSubscription = function(find, options, skip, limit) {
+ return Meteor.subscribe("questions", {}, options, skip, limit);
+}
+
 // Meteor.subscribe("questions");
 Deps.autorun(function() {
-  Meteor.questionListHandle = Meteor.subscribe("questions", Session.get("pagingQuestionListSkip"), Session.get("pagingQuestionListLimit"));
+  Meteor.questionListHandle = questionListSubscription({}, sortQuestions(Session.get("questionListSortProperty")),
+    Session.get("pagingQuestionListSkip"),
+    Session.get("pagingQuestionListLimit")
+  );
 });
 
 // Single Question
@@ -21,7 +28,6 @@ Deps.autorun(function() {
     Session.set('singleAnswerReady', true);
   });
 });
-
 
 // permissions
 Meteor.startup(function() {

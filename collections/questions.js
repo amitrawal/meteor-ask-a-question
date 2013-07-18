@@ -27,6 +27,7 @@ Meteor.methods({
       upVotes: [],
       downVotes: [],
       answers: 0,
+      votes : 0,
       tags : _.flatten(questionAttributes.tags.split(' '))
     });
     

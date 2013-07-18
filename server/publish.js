@@ -16,9 +16,24 @@ Meteor.publish('answers', function(questionId) {
   return Answers.find({questionId : questionId});
 });
 
-Meteor.publish("questions", function(skip, limit) {
-  return Questions.find({}, {
-    skip: skip || 0
-    , limit: limit || 10
-  });
+Meteor.publish("questions", function(find, options, skip, limit) {
+  options = options || {};
+  options.skip = skip || 0;
+  options.limit = limit || 5;
+
+  if(!options.sort)
+    options.sort = {createdAt : -1};
+
+  var q = Questions.find(find || {}, options);  
+  return q;  
 });
+
+// Meteor.publish("questions", function(find, options) {
+//   options = options || {};  
+  
+//   console.log("ssss");
+//   console.log(options);
+//   var q = Questions.find(find || {}, options);
+//   console.log(q);
+//   return q;
+// });

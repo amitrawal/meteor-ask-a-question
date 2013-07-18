@@ -3,8 +3,8 @@
     <div class="subheader">
       <h1>Questions</h1>
       <div id="tabs">
-        <a class="active" title="questions that have been asked, answered, or updated recently">active</a>
-        <a title="questions with the most views, answers, and votes over the last few days">hot</a>
+        <a {{#if subHeaderTabIs 'recent'}}class="active"{{/if}} title="the most recently asked quesitons" href="/questions">recent</a>
+        <a {{#if subHeaderTabIs 'best'}}class="active"{{/if}} title="questions with the most number of votes" href="/questions/best">best</a>
       </div>
     </div>
     
