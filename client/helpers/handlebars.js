@@ -8,6 +8,7 @@ Handlebars.registerHelper('pluralize', function(word, count) {
 
 
 // Copied from https://github.com/raix/Meteor-handlebar-helpers
+
 Handlebars.registerHelper('$eq', function (a, b) {
       return (a == b); //Only text, numbers, boolean - not array & objects
 });

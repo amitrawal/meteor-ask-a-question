@@ -1,86 +1,90 @@
 <template name="showQuestion">
-  {{#with question}}
-    <div>      
-      <div id="question-header">
-        <h1>
-          <a class="question-hyperlink">{{title}}</a>
-          {{#if canEdit}}
-            <a class="quesiton-edit-hyperlink" href="/questions/{{_id}}/edit">Edit</a>
-          {{/if}}
-        </h1>
-      </div>            
-      <div id="mainbar">
-        <div id="question" class="question">
-          <table>
-            <tbody>
-              <tr>
-                <td class="votecell">
-                  <div class="vote">
-                    {{#if upVoted}}
-                      <a title="This question shows research effort; it is useful and clear (click again to undo)" class="vote-up-on cancel-upvote">up vote</a>
-                    {{else}}
-                      {{#if downVoted}}
-                        <a title="This question shows research effort; it is useful and clear (click again to undo)" class="vote-up-off">up vote</a>
-                      {{else}}
-                        <a title="This question shows research effort; it is useful and clear (click again to undo)" class="vote-up-off upvote">up vote</a>
-                      {{/if}}
-                    {{/if}}
-                    <span class="vote-count-post">{{voteScore}}</span>
-                    {{#if downVoted}}
-                      <a title="This question does not show any research effort; it is unclear or not useful (click again to undo)" class="vote-down-on cancel-downvote">down vote</a>
-                    {{else}}
+  {{#if loading}}
+    Loading...
+  {{else}}
+    {{#with question}}
+      <div>
+        <div id="question-header">
+          <h1>
+            <a class="question-hyperlink">{{title}}</a>
+            {{#if canEdit}}
+              <a class="quesiton-edit-hyperlink" href="/questions/{{_id}}/edit">Edit</a>
+            {{/if}}
+          </h1>
+        </div>            
+        <div id="mainbar">
+          <div id="question" class="question">
+            <table>
+              <tbody>
+                <tr>
+                  <td class="votecell">
+                    <div class="vote">
                       {{#if upVoted}}
-                        <a title="This question does not show any research effort; it is unclear or not useful (click again to undo)" class="vote-down-off">down vote</a>
+                        <a title="This question shows research effort; it is useful and clear (click again to undo)" class="vote-up-on cancel-upvote">up vote</a>
                       {{else}}
-                        <a title="This question does not show any research effort; it is unclear or not useful (click again to undo)" class="vote-down-off downvote">down vote</a>
+                        {{#if downVoted}}
+                          <a title="This question shows research effort; it is useful and clear (click again to undo)" class="vote-up-off">up vote</a>
+                        {{else}}
+                          <a title="This question shows research effort; it is useful and clear (click again to undo)" class="vote-up-off upvote">up vote</a>
+                        {{/if}}
                       {{/if}}
-                    {{/if}}
-                  </div>
-                </td>                
-                <td class="postcell">
-                  <div>
-                      <div class="post-text"><p>{{{formattedDescription}}}</p></div>
-                      <div class="post-tag-list">
-                        {{#each tags}}
-                          <a class="post-tag" href="#">{{this}}</a>
-                        {{/each}}
-                      </div>
-                      <table class="fw">
-                        <tbody>
-                          <tr>
-                            <td class="vt">
-                              <div>&nbsp;</div>
-                            </td>
-                            <td class="post-signature owner">
-                              <div class="user-info">
-                                <div class="user-action-time">
-                                  asked <span class="relativeTime">{{ago createdAt}}</span>
-                                </div>
-                                <div class="user-gravatar32">
-                                  <div>
-                                    <img width="32" height="32" src="/images/missing_gravatar.png" />
+                      <span class="vote-count-post">{{voteScore}}</span>
+                      {{#if downVoted}}
+                        <a title="This question does not show any research effort; it is unclear or not useful (click again to undo)" class="vote-down-on cancel-downvote">down vote</a>
+                      {{else}}
+                        {{#if upVoted}}
+                          <a title="This question does not show any research effort; it is unclear or not useful (click again to undo)" class="vote-down-off">down vote</a>
+                        {{else}}
+                          <a title="This question does not show any research effort; it is unclear or not useful (click again to undo)" class="vote-down-off downvote">down vote</a>
+                        {{/if}}
+                      {{/if}}
+                    </div>
+                  </td>                
+                  <td class="postcell">
+                    <div>
+                        <div class="post-text"><p>{{{formattedDescription}}}</p></div>
+                        <div class="post-tag-list">
+                          {{#each tags}}
+                            <a class="post-tag" href="#">{{this}}</a>
+                          {{/each}}
+                        </div>
+                        <table class="fw">
+                          <tbody>
+                            <tr>
+                              <td class="vt">
+                                <div>&nbsp;</div>
+                              </td>
+                              <td class="post-signature owner">
+                                <div class="user-info">
+                                  <div class="user-action-time">
+                                    asked <span class="relativeTime">{{ago createdAt}}</span>
+                                  </div>
+                                  <div class="user-gravatar32">
+                                    <div>
+                                      <img width="32" height="32" src="/images/missing_gravatar.png" />
+                                    </div>
+                                  </div>
+                                  <div class="user-details">
+                                    <a href="/users/{{userId}}">{{ownerName}}</a>
                                   </div>
                                 </div>
-                                <div class="user-details">
-                                  <a href="/users/{{userId}}">{{ownerName}}</a>
-                                </div>
-                              </div>
-                            </td>
-                        </tbody>
-                      </table>
-                  </div>
-                </td>                
-            </tbody>
-          </table>
+                              </td>
+                          </tbody>
+                        </table>
+                    </div>
+                  </td>                
+              </tbody>
+            </table>
+          </div>
+          {{> answerList}}
+          {{#if canAnswer}}
+            {{> submit_answer}}
+          {{/if}}
+        </div>      
+        <div id="sidebar">
+          {{> sidebarAdvertisment}}
         </div>
-        {{> answerList}}
-        {{#if canAnswer}}
-          {{> submit_answer}}
-        {{/if}}
-      </div>      
-      <div id="sidebar">
-        {{> sidebarAdvertisment}}
       </div>
-    </div>
-  {{/with}}
+    {{/with}}
+  {{/if}}
 </template>

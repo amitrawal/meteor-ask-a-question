@@ -28,6 +28,9 @@ Template.showQuestion.helpers({
   },
   formattedDescription : function () {
     return nl2br(this.description);
+  },
+  loading : function () {
+    return !!!Session.get('singleQuestionReady');
   }
 });
 
