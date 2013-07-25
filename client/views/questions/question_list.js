@@ -36,8 +36,11 @@ Template.questionList.helpers({
   },
   questions : function () {
     // Figure out why do we need to put sortQuestions here, as its already present in the subscribe call?
-    // If I don't put sortQuestions(Session.get('questionListSortProperty')) here sorting does not get applied.
-    return Questions.find({}, sortQuestions(Session.get('questionListSortProperty')));
+    // If I don't put sortQuestions(Session.get('questionListSortProperty')) here sorting does not get applied.    
+    return Questions.find({}, sortQuestions(Session.get('questionListSortProperty'))).fetch();
+  },
+  loading : function () {
+    return !!!Session.get('questionListReady');
   }
 });
 

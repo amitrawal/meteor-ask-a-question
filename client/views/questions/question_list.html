@@ -1,27 +1,41 @@
 <template name="questionList"> 
-  <div id="mainbar">
-    <div class="subheader">
-      <h1>Questions</h1>
-      <div id="tabs">
-        <a {{#if subHeaderTabIs 'recent'}}class="active"{{/if}} title="the most recently asked quesitons" href="/questions">recent</a>
-        <a {{#if subHeaderTabIs 'best'}}class="active"{{/if}} title="questions with the most number of votes" href="/questions/best">best</a>
+  {{#if loading}}
+    Loading...
+  {{else}}
+    <div id="mainbar">
+      <div class="subheader">
+        <h1>Questions</h1>
+        <div id="tabs">
+          <a {{#if subHeaderTabIs 'recent'}}class="active"{{/if}} title="the most recently asked quesitons" href="/questions">recent</a>
+          <a {{#if subHeaderTabIs 'best'}}class="active"{{/if}} title="questions with the most number of votes" href="/questions/best">best</a>
+        </div>
       </div>
+      
+      <div id="qlist-wrapper">
+        {{#each questions}}
+          {{> questionListItem}}
+        {{else}}
+          <div class="no-records">
+            No questions present.
+          </div>
+        {{/each}}
+      </div>
+      
+      {{#if $gt questions.length 0}}
+        <div class="well well-small cbt">
+          {{{ paginationButtons }}}
+        </div>
+      {{/if}}        
     </div>
     
-    <div id="qlist-wrapper">
-      {{#each questions}}
-        {{> questionListItem}}
-      {{/each}}
-    </div>    
-    
-    <div class="well well-small cbt">
-      {{{ paginationButtons }}}
+    <div class="sidebar">
+      {{> sidebarAdvertisment}}
+
+      {{#if $gt questions.length 0}}
+        {{> recentTags}}    
+      {{/if}}
     </div>
-  </div>
-  <div class="sidebar">
-    {{> sidebarAdvertisment}}
-    {{> recentTags}}
-  </div>
+  {{/if}}
 </template>
 
 <template name="recentTags">

@@ -24,16 +24,5 @@ Meteor.publish("questions", function(find, options, skip, limit) {
   if(!options.sort)
     options.sort = {createdAt : -1};
 
-  var q = Questions.find(find || {}, options);  
-  return q;  
+  return Questions.find(find || {}, options);
 });
-
-// Meteor.publish("questions", function(find, options) {
-//   options = options || {};  
-  
-//   console.log("ssss");
-//   console.log(options);
-//   var q = Questions.find(find || {}, options);
-//   console.log(q);
-//   return q;
-// });

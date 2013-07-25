@@ -799,3 +799,10 @@ h1#user-displayname {
 #mainbar .well {
   box-shadow: 0px;
 }
+
+.no-records {
+  color: #777777;
+}
+#qlist-wrapper .no-records {
+  margin-top: 10px;
+}
